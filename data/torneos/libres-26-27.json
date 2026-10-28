@@ -48,7 +48,7 @@
   { "id": "eq-40", "nombre": "MYB Yuyitos Del Pago", "escudo": "assets/img/equipos/MYBYUYITOSDELPAGO.jpeg" },
   { "id": "eq-41", "nombre": "La MDN", "escudo": "assets/img/equipos/LAMDN.png" },
   { "id": "eq-42", "nombre": "El Fortin", "escudo": "assets/img/equipos/ELFORTIN.jpeg" },
-  { "id": "eq-43", "nombre": "Juveniles", "escudo": "assets/img/equipos/JUVENILES.png" }
+  { "id": "eq-43", "nombre": "Juveniles", "escudo": "assets/img/equipos/JUVENILES.png" },
   { "id": "eq-44", "nombre": "Amigos FC", "escudo": "" },
   { "id": "eq-45", "nombre": "Supermercados Yaguane", "escudo": "" }
   ],
