@@ -5,7 +5,25 @@
   "temporada": "26/27",
   "edicion": "26/27",
   "estado": "vigente",
-  "equipos": [],
+  "equipos": [  
+  { "id": "eq-1", "nombre": "Despensa Doña Negra", "escudo": "assets/img/equipos/DESPENSADOÑANEGRA.png" },
+  { "id": "eq-2", "nombre": "Consejo Del Mate", "escudo": "" },
+  { "id": "eq-3", "nombre": "Kiosco Bri-Enzo", "escudo": "assets/img/equipos/KIOSCOBRI-ENZOVET.png" },
+  { "id": "eq-4", "nombre": "Stud El Tigrecito", "escudo": "assets/img/equipos/STUDELTIGRESITO.png" },
+  { "id": "eq-5", "nombre": "Abertura Plef", "escudo": "" },
+  { "id": "eq-6", "nombre": "Deportivo Caracu", "escudo": "assets/img/equipos/DEPORTIVOCARACU.png" },
+  { "id": "eq-7", "nombre": "MR servicios", "escudo": "" },
+  { "id": "eq-8", "nombre": "LG construcciones", "escudo": "" },
+  { "id": "eq-9", "nombre": "Kiosco Los Hermanitos", "escudo": "" },
+  { "id": "eq-10", "nombre": "Transportes Hercules", "escudo": "assets/img/equipos/HERCULES.png" },
+  { "id": "eq-11", "nombre": "La Tribuna", "escudo": "assets/img/equipos/LATRIBUNA.png" },
+  { "id": "eq-12", "nombre": "Corazon De Belen", "escudo": "assets/img/equipos/CORAZONDEBELEN.png" },
+  { "id": "eq-13", "nombre": "Gomeria Exequiel", "escudo": "" },
+  { "id": "eq-13", "nombre": "Infinet", "escudo": "assets/img/equipos/INFINET.png" },
+  { "id": "eq-13", "nombre": "P71", "escudo": "" },
+  { "id": "eq-13", "nombre": "Los Luqueros", "escudo": "assets/img/equipos/LOSLUQUEROS.png" },
+  { "id": "eq-13", "nombre": "Los Pizanres", "escudo": "assets/img/equipos/LOSPIZANTES.png" }
+  ],
   "rondas": [],
   "goleadores": []
 }
