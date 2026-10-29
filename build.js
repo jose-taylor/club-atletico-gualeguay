@@ -8,6 +8,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { execSync } from "node:child_process";
 
 import { leerJSON, leerTexto, escribirArchivo, existe } from "./lib/utils.js";
 import { escapeHtml, slugify, formatFecha, partesFecha } from "./lib/texto.js";
@@ -245,13 +246,39 @@ function fechaCartel(iso) {
     `<span class="fc-anio">${anio}</span></span></span>`;
 }
 
-// Tarjeta de una nota (la comparten el listado y la home). Dos formas:
-//   - con foto propia: la foto va arriba, en una banda apaisada de 180 px;
-//   - sin foto: la portada por defecto (el trofeo) va como una placa vertical al
-//     costado del texto, porque la foto es vertical (186x504) y recortada en una
-//     banda de 180 px quedaría diminuta (ver .nota-placa en components.css).
-// `prefijoHref` resuelve el enlace relativo (la home necesita "noticias/") y
-// `conBadge` agrega la categoría al pie de la nota (solo el listado).
+function esVertical(img) {
+  try {
+    const p = path.join(RAIZ, img);
+    const buf = fs.readFileSync(p);
+    // JPEG
+    if (buf[0] === 0xFF && buf[1] === 0xD8) {
+      let i = 2;
+      while (i < buf.length) {
+        if (buf[i] !== 0xFF) break;
+        const type = buf[i + 1];
+        i += 2;
+        if (type === 0xD8 || type === 0xD9) continue;
+        const len = (buf[i] << 8) | buf[i + 1];
+        if (type >= 0xC0 && type <= 0xC3 && i + 7 < buf.length) {
+          const h = (buf[i + 5] << 8) | buf[i + 6];
+          const w = (buf[i + 7] << 8) | buf[i + 8];
+          return h > w;
+        }
+        i += len;
+      }
+    }
+    // PNG
+    if (buf[0] === 0x89 && buf[1] === 0x50) {
+      if (buf.length >= 24) {
+        const w = (buf[16] << 24) | (buf[17] << 16) | (buf[18] << 8) | buf[19];
+        const h = (buf[20] << 24) | (buf[21] << 16) | (buf[22] << 8) | buf[23];
+        return h > w;
+      }
+    }
+  } catch {}
+  return false;
+}
+
 function tarjetaNota(n, profundidad, { prefijoHref = "", conBadge = false } = {}) {
   const href = `${prefijoHref}${slugify(n.titulo)}-${n.id}.html`;
   const meta = conBadge ? `${fechaCartel(n.fecha)} ${badge(n.categoria)}` : fechaCartel(n.fecha);
@@ -260,7 +287,8 @@ function tarjetaNota(n, profundidad, { prefijoHref = "", conBadge = false } = {}
         <p class="nota-meta">${meta}</p>
         <p>${escapeHtml(n.resumen)}</p>
       </div>`;
-  const clase = n.imagen ? "tarjeta-nota" : "tarjeta-nota tarjeta-nota--sin-foto";
+  const vertical = n.imagen ? esVertical(n.imagen) : false;
+  const clase = n.imagen ? `tarjeta-nota${vertical ? " tarjeta-nota--vertical" : ""}` : "tarjeta-nota tarjeta-nota--sin-foto";
   const adentro = n.imagen
     ? `<div class="nota-media">
         <img class="nota-img" src="${rutaAsset(n.imagen, profundidad)}" alt="" loading="lazy">

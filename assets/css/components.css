@@ -601,14 +601,32 @@
 /* La foto de arriba de la tarjeta vive en un contenedor con recorte propio: al
    hacer zoom en el hover, la imagen se recorta ahí y no tapa los 3 px del
    marco amarillo. */
-.nota-media { overflow: hidden; }
+.nota-media {
+  overflow: hidden;
+  background: var(--color-encabezado);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .nota-img {
   width: 100%;
   height: 180px;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
-  background: var(--color-superficie-alt);
+  background: transparent;
+}
+
+/* En el detalle de la noticia la imagen se adapta a sus dimensiones (vertical u horizontal) */
+.nota .nota-img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 80vh;
+  margin: 1rem auto;
+  object-fit: contain;
+  background: var(--color-encabezado);
 }
 
 /* Portada por defecto en el detalle de la nota: la nota que todavía no tiene
@@ -635,14 +653,39 @@
   align-items: flex-start;
   padding: 0.9rem;
 }
-.tarjeta-nota--sin-foto .nota-placa-img {
-  flex: none;
-  width: min(132px, 34vw);
-  height: auto;
-  display: block;
-  border-radius: calc(var(--radio) - 3px);
+/* Tarjeta con foto vertical: texto al lado de la imagen */
+.tarjeta-nota--vertical {
+  display: grid;
+  grid-template-columns: minmax(220px, 34%) 1fr;
+  align-items: stretch;
 }
-.tarjeta-nota--sin-foto .tarjeta-nota-body { padding: 0; }
+
+.tarjeta-nota--vertical .nota-media {
+  height: 100%;
+}
+
+.tarjeta-nota--vertical .nota-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
+  background: var(--color-encabezado);
+}
+
+.tarjeta-nota--vertical .tarjeta-nota-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .tarjeta-nota--vertical {
+    grid-template-columns: 1fr;
+  }
+  .tarjeta-nota--vertical .nota-img {
+    height: 220px;
+  }
+}
 
 /* Hover de las tarjetas de nota: suben 2 px y el marco se acelera; la imagen
    crece dentro de su contenedor (.nota-media), que la recorta para no tapar el
