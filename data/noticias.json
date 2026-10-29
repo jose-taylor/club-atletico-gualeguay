@@ -1,19 +1,10 @@
 [
   {
     "id": 1,
-    "titulo": "Arrancó la edición 26/27 de los torneos",
+    "titulo": "Presentación: XIII Edición de Fútbol 7 Libre y IV Edición de Fútbol Veteranos",
     "fecha": "2026-09-20",
-    "resumen": "Se sorteó la ronda inicial con más de 60 equipos en total.",
+    "resumen": "El Club Atlético Gualeguay da inicio a dos nuevas ediciones de sus torneos nocturnos.",
     "categoria": "torneo",
-    "contenido": "El Club Atlético Gualeguay dio inicio a la temporada 26/27.\n\nCon 60 equipos en categoría Libre y 20 en Veteranos, la primera ronda se juega este fin de semana.\n\nLos resultados se cargan jornada a jornada por la comisión."
-  },
-  {
-    "id": 2,
-    "titulo": "La sede, lista para el arranque",
-    "fecha": "2026-09-15",
-    "resumen": "Se acondicionaron las canchas y la iluminación de la sede.",
-    "categoria": "club",
-    "imagen": "assets/img/cancha-f7.jpg",
-    "contenido": "La comisión trabajó durante la semana para dejar las canchas en condiciones.\n\nLa iluminación de la cancha principal fue renovada."
+    "contenido": "Con gran expectativa, el Club Atlético Gualeguay presenta la Decimotercera Edición del Torneo de Fútbol 7 Libre y la Cuarta Edición del Torneo de Fútbol Veteranos, correspondiente a la Temporada 26/27.\n\nAmbas competencias se desarrollarán en la sede del Club, bajo las luces de la cancha de fútbol 7, manteniendo la tradicional modalidad nocturna que ya es característica de estas citas deportivas.\n\nPara esta edición, la categoría Libre cuenta con una amplia participación de equipos villaguayenses, mientras que la categoría Veteranos reúne a aquellos que siguen demostrando su pasión por el fútbol y su compromiso con el club.\n\n**Formato de competencia:**\n\n- **Fútbol 7 Libre:** torneo a doble eliminación, con partidos nocturnos en la sede del Club Atlético Gualeguay.\n- **Fútbol Veteranos:** torneo a doble eliminación, con partidos nocturnos en la sede del Club Atlético Gualeguay.\n\nLa comisión directiva y organizadora agradece el apoyo de los sponsors, la colaboración de todos los equipos participantes y el entusiasmo del público que, año tras año, acompaña a esta fiesta del fútbol 7 de Gualeguay.\n\n¡Bienvenidos a una nueva temporada y que comience la competencia!"
   }
 ]
