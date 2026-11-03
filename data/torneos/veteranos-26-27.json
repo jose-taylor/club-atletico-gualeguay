@@ -19,10 +19,10 @@
   { "id": "eq-11", "nombre": "La Tribuna", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/la-tribuna-f5.png" },
   { "id": "eq-12", "nombre": "Corazon De Belen", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/corazon-de-belen.png" },
   { "id": "eq-13", "nombre": "Gomeria Exequiel", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/gomeria-exequiel.png" },
-  { "id": "eq-13", "nombre": "Infinet", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/infinet.png" },
-  { "id": "eq-13", "nombre": "P71", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/P71.png" },
-  { "id": "eq-13", "nombre": "Los Luqueros", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/los-luqueros.png" },
-  { "id": "eq-13", "nombre": "Los Pizantes", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/los-pizantes.png" }
+  { "id": "eq-14", "nombre": "Infinet", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/infinet.png" },
+  { "id": "eq-15", "nombre": "P71", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/P71.png" },
+  { "id": "eq-16", "nombre": "Los Luqueros", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/los-luqueros.png" },
+  { "id": "eq-17", "nombre": "Los Pizantes", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/los-pizantes.png" }
   ],
   "rondas": [],
   "goleadores": []
