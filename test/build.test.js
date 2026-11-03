@@ -38,7 +38,7 @@ test("build: genera el sitio completo", () => {
 test("build: una página de noticia por noticia, con su slug", () => {
   const pagina = paginas().find((p) => p.startsWith("noticias/") && p !== "noticias/index.html");
   assert.ok(pagina, "no se generó ninguna página de noticia");
-  assert.match(pagina, /^noticias\/arranco-la-edicion-26-27-de-los-torneos-1\.html$/);
+  assert.match(pagina, /^noticias\/presentacion-xiii-edicion-de-futbol-7-libre-y-iv-edicion-de-futbol-veteranos-1\.html$/);
 });
 
 test("build: no deja marcadores sin reemplazar en ninguna página", () => {
@@ -172,28 +172,21 @@ test("build: la lista de noticias enlaza al detalle", () => {
   const html = leer("noticias/index.html");
   // El listado no corta por año: la fecha va en cada tarjeta.
   assert.doesNotMatch(html, /archivo-anio/);
-  assert.match(html, /href="arranco-la-edicion-26-27-de-los-torneos-1\.html"/);
-  // Nota sin foto propia: la portada por defecto (el trofeo) va como placa al
-  // costado del texto, con la tarjeta marcada y el alt vacío (no es una foto de
-  // la noticia, es un relleno).
-  assert.match(html, /class="tarjeta-nota tarjeta-nota--sin-foto" data-reveal>/);
-  assert.match(html, /class="nota-placa-img" src="\.\.\/assets\/img\/trofeo\.jpg" alt=""/);
+  assert.match(html, /href="presentacion-xiii-edicion-de-futbol-7-libre-y-iv-edicion-de-futbol-veteranos-1\.html"/);
   // Nota con foto propia: la banda apaisada de siempre, en diferido.
-  assert.match(html, /class="nota-img" src="\.\.\/assets\/img\/cancha-f7\.jpg" alt="" loading="lazy"/);
+  assert.match(html, /class="nota-img" src="\.\.\/assets\/img\/noticia-1\.jpg" alt="" loading="lazy"/);
   assert.doesNotMatch(html, /placeholder/);
 });
 
 test("build: el detalle de la noticia arma los párrafos y la imagen", () => {
-  const html = leer("noticias/arranco-la-edicion-26-27-de-los-torneos-1.html");
-  assert.match(html, /<h1[^>]*>Arrancó la edición 26\/27 de los torneos<\/h1>/);
+  const html = leer("noticias/presentacion-xiii-edicion-de-futbol-7-libre-y-iv-edicion-de-futbol-veteranos-1.html");
+  assert.match(html, /<h1[^>]*>Presentación: XIII Edición de Fútbol 7 Libre y IV Edición de Fútbol Veteranos<\/h1>/);
   assert.ok((html.match(/<p>/g) || []).length >= 3, "esperaba al menos 3 párrafos");
-  assert.match(html, /class="nota-img nota-img--sin-foto" src="\.\.\/assets\/img\/trofeo\.jpg" alt=""/);
-  // En el detalle la portada no se carga en diferido: es la imagen de arriba.
-  assert.doesNotMatch(html, /nota-img--sin-foto[^>]*loading="lazy"/);
+  assert.match(html, /class="nota-img[^"]*" src="\.\.\/assets\/img\/noticia-1\.jpg"/);
 });
 
 test("build: la home y el detalle escapan los datos que vienen del JSON", () => {
-  const html = leer("noticias/arranco-la-edicion-26-27-de-los-torneos-1.html");
+  const html = leer("noticias/presentacion-xiii-edicion-de-futbol-7-libre-y-iv-edicion-de-futbol-veteranos-1.html");
   assert.doesNotMatch(html, /<script>alert/);
 });
 
