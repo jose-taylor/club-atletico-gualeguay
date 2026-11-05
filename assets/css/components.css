@@ -193,9 +193,19 @@
   gap: var(--esp-4);
 }
 
+/* Fila de partido: VS siempre centrado, equipos con espacio simétrico */
+.tp-fila--match {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--esp-3);
+}
+
 .tp-equipo {
   font-weight: 600;
   color: var(--color-blanco);
+  min-width: 0;
+  line-height: 1.25;
 }
 .tp-equipo.vacio {
   color: var(--color-texto-suave);
@@ -203,10 +213,31 @@
   font-style: italic;
 }
 
+.tp-equipo--local,
+.tp-equipo--visitante {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem var(--esp-2);
+}
+
+.tp-equipo--local .equipo-escudo,
+.tp-equipo--visitante .equipo-escudo {
+  margin-right: 0;
+}
+
+.tp-equipo--visitante {
+  justify-content: flex-end;
+  text-align: right;
+}
+
 .tp-resultado {
   font-weight: 800;
   white-space: nowrap;
   color: var(--color-primario);
+  align-self: center;
+  text-align: center;
+  padding: 0 var(--esp-1);
 }
 
 /* ===== Escudos de equipo ===== */

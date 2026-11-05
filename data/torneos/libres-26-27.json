@@ -6,10 +6,10 @@
   "edicion": "26/27",
   "estado": "vigente",
   "equipos": [ 
-  { "id": "eq-1", "nombre": "La Esquina De Tia Norma", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-esquina-tia-norma.png" },
+  { "id": "eq-1", "nombre": "La Esquina De Tia Norma", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-esquina-tia-norma.png","jugadores": [] },
   { "id": "eq-2", "nombre": "Deportivo LT", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/deportivo-lt.png" },
   { "id": "eq-3", "nombre": "Tu Bazar En Linea", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/tu-bazar-en-linea.png" },
-  { "id": "eq-4", "nombre": "Estudio Jurídico Gabriel Demora", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/estudio-jurido-demora.png" },
+  { "id": "eq-4", "nombre": "Estudio Jurídico G. Demora", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/estudio-jurido-demora.png" },
   { "id": "eq-5", "nombre": "Rinconcito", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/rinconcito.png" },
   { "id": "eq-6", "nombre": "Granja Don Horacio", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/granja-don-horacio.png" },
   { "id": "eq-7", "nombre": "El Rejunte", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/el-rejunte.png" },
@@ -73,7 +73,7 @@
           "equipoA": "eq-17",
           "equipoB": "eq-12",
           "fecha": "2099-99-98",
-          "hora": "21:45",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -81,7 +81,7 @@
           "equipoA": "eq-13",
           "equipoB": "eq-18",
           "fecha": "2099-99-98",
-          "hora": "22:30",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -89,7 +89,7 @@
           "equipoA": "eq-26",
           "equipoB": "eq-3",
           "fecha": "2099-99-98",
-          "hora": "23:15",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -105,7 +105,7 @@
           "equipoA": "eq-34",
           "equipoB": "eq-19",
           "fecha": "2099-99-98",
-          "hora": "21:45",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -113,7 +113,7 @@
           "equipoA": "eq-35",
           "equipoB": "eq-37",
           "fecha": "2099-99-98",
-          "hora": "22:30",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -121,7 +121,7 @@
           "equipoA": "eq-40",
           "equipoB": "eq-15",
           "fecha": "2099-99-98",
-          "hora": "23:15",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -137,7 +137,7 @@
           "equipoA": "eq-1",
           "equipoB": "eq-10",
           "fecha": "2099-99-98",
-          "hora": "21:45",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -145,7 +145,7 @@
           "equipoA": "eq-11",
           "equipoB": "eq-36",
           "fecha": "2099-99-98",
-          "hora": "22:30",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -153,7 +153,7 @@
           "equipoA": "eq-6",
           "equipoB": "eq-9",
           "fecha": "2099-99-98",
-          "hora": "23:15",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -169,7 +169,7 @@
           "equipoA": "eq-41",
           "equipoB": "eq-2",
           "fecha": "2099-99-99",
-          "hora": "21:45",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -177,7 +177,7 @@
           "equipoA": "eq-46",
           "equipoB": "eq-7",
           "fecha": "2099-99-99",
-          "hora": "22:30",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -185,7 +185,7 @@
           "equipoA": "eq-22",
           "equipoB": "eq-38",
           "fecha": "2099-99-99",
-          "hora": "23:15",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -201,7 +201,7 @@
           "equipoA": "eq-24",
           "equipoB": "eq-39",
           "fecha": "2099-99-99",
-          "hora": "21:45",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -209,7 +209,7 @@
           "equipoA": "eq-29",
           "equipoB": "eq-44",
           "fecha": "2099-99-99",
-          "hora": "22:30",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -217,7 +217,7 @@
           "equipoA": "eq-20",
           "equipoB": "eq-30",
           "fecha": "2099-99-99",
-          "hora": "23:15",
+          "hora": "21:00",
           "estado": "programado"
         },
         {
@@ -233,7 +233,7 @@
           "equipoA": "eq-23",
           "equipoB": "",
           "fecha": "2099-99-99",
-          "hora": "21:45",
+          "hora": "21:00",
           "estado": "programado"
         }
       ]
