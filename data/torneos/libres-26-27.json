@@ -45,8 +45,222 @@
   { "id": "eq-38", "nombre": "EF-7", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/el-fortin.png" },
   { "id": "eq-39", "nombre": "Juveniles", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/juveniles.png" },
   { "id": "eq-40", "nombre": "Amigos FC", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/amigos.png" },
-  { "id": "eq-41", "nombre": "Supermercados Yaguane", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/yaguane.png" }
+  { "id": "eq-41", "nombre": "Supermercados Yaguane", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/yaguane.png" },
+  { "id": "eq-42", "nombre": "El 3er tiempo", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/el-3er-tiempo.png" },
+  { "id": "eq-43", "nombre": "LG rodados", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/LG-rodados.png" },
+  { "id": "eq-44", "nombre": "inmobiliaria de la casa", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/inmobiliari-de-la-casa.png" },
+  { "id": "eq-45", "nombre": "La burla ", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-burla.png" },
+  { "id": "eq-46", "nombre": "Transportes Kike", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/transportes-kike.png" }
   ],
-  "rondas": [],
+  "rondas": [
+    {
+      "id": "ronda-1",
+      "nombre": "1ª Ronda",
+      "zona": "iniciales",
+      "orden": 1,
+      "partidos": [
+        {
+          "id": "p-1-1",
+          "equipoA": "eq-21",
+          "equipoB": "eq-31",
+          "fecha": "2099-99-98",
+          "hora": "21:00",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-2",
+          "equipoA": "eq-17",
+          "equipoB": "eq-12",
+          "fecha": "2099-99-98",
+          "hora": "21:45",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-3",
+          "equipoA": "eq-13",
+          "equipoB": "eq-18",
+          "fecha": "2099-99-98",
+          "hora": "22:30",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-4",
+          "equipoA": "eq-26",
+          "equipoB": "eq-3",
+          "fecha": "2099-99-98",
+          "hora": "23:15",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-5",
+          "equipoA": "eq-5",
+          "equipoB": "eq-4",
+          "fecha": "2099-99-98",
+          "hora": "21:00",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-6",
+          "equipoA": "eq-34",
+          "equipoB": "eq-19",
+          "fecha": "2099-99-98",
+          "hora": "21:45",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-7",
+          "equipoA": "eq-35",
+          "equipoB": "eq-37",
+          "fecha": "2099-99-98",
+          "hora": "22:30",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-8",
+          "equipoA": "eq-40",
+          "equipoB": "eq-15",
+          "fecha": "2099-99-98",
+          "hora": "23:15",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-9",
+          "equipoA": "eq-14",
+          "equipoB": "eq-25",
+          "fecha": "2099-99-98",
+          "hora": "21:00",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-10",
+          "equipoA": "eq-1",
+          "equipoB": "eq-10",
+          "fecha": "2099-99-98",
+          "hora": "21:45",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-11",
+          "equipoA": "eq-11",
+          "equipoB": "eq-36",
+          "fecha": "2099-99-98",
+          "hora": "22:30",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-12",
+          "equipoA": "eq-6",
+          "equipoB": "eq-9",
+          "fecha": "2099-99-98",
+          "hora": "23:15",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-13",
+          "equipoA": "eq-16",
+          "equipoB": "eq-42",
+          "fecha": "2099-99-99",
+          "hora": "21:00",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-14",
+          "equipoA": "eq-41",
+          "equipoB": "eq-2",
+          "fecha": "2099-99-99",
+          "hora": "21:45",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-15",
+          "equipoA": "eq-46",
+          "equipoB": "eq-7",
+          "fecha": "2099-99-99",
+          "hora": "22:30",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-16",
+          "equipoA": "eq-22",
+          "equipoB": "eq-38",
+          "fecha": "2099-99-99",
+          "hora": "23:15",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-17",
+          "equipoA": "eq-8",
+          "equipoB": "eq-28",
+          "fecha": "2099-99-99",
+          "hora": "21:00",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-18",
+          "equipoA": "eq-24",
+          "equipoB": "eq-39",
+          "fecha": "2099-99-99",
+          "hora": "21:45",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-19",
+          "equipoA": "eq-29",
+          "equipoB": "eq-44",
+          "fecha": "2099-99-99",
+          "hora": "22:30",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-20",
+          "equipoA": "eq-20",
+          "equipoB": "eq-30",
+          "fecha": "2099-99-99",
+          "hora": "23:15",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-21",
+          "equipoA": "eq-27",
+          "equipoB": "eq-45",
+          "fecha": "2099-99-99",
+          "hora": "21:00",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-22",
+          "equipoA": "eq-23",
+          "equipoB": "",
+          "fecha": "2099-99-99",
+          "hora": "21:45",
+          "estado": "programado"
+        }
+      ]
+    },
+    {
+      "id": "ronda-2-ganadores",
+      "nombre": "2ª Ronda",
+      "zona": "ganadores",
+      "orden": 2,
+      "partidos": [
+        {
+          "id": "p-2-1",
+          "equipoA": "",
+          "equipoB": "",
+          "fecha": "2099-99-99",
+          "hora": "21:00",
+          "estado": "programado"
+        },
+        {
+          "id": "p-2-2",
+          "equipoA": "",
+          "equipoB": "",
+          "fecha": "2099-99-99",
+          "hora": "22:00",
+          "estado": "programado"
+        }
+      ]
+    }
+  ],
   "goleadores": []
 }
