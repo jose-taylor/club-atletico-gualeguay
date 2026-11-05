@@ -206,6 +206,7 @@
   color: var(--color-blanco);
   min-width: 0;
   line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 .tp-equipo.vacio {
   color: var(--color-texto-suave);
@@ -219,16 +220,24 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.15rem var(--esp-2);
+  min-width: 0;
 }
 
 .tp-equipo--local .equipo-escudo,
 .tp-equipo--visitante .equipo-escudo {
   margin-right: 0;
+  flex: 0 0 auto;
+}
+
+/* Escudos pegados al VS: local hacia la derecha, visitante hacia la izquierda */
+.tp-equipo--local {
+  justify-content: flex-end;
+  text-align: right;
 }
 
 .tp-equipo--visitante {
-  justify-content: flex-end;
-  text-align: right;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .tp-resultado {
