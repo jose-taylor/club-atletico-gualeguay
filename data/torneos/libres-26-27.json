@@ -58,6 +58,7 @@
       "nombre": "1ª Ronda",
       "zona": "iniciales",
       "orden": 1,
+      "numero": 1,
       "partidos": [
         {
           "id": "p-1-1",
@@ -233,30 +234,6 @@
           "equipoB": "",
           "fecha": "2099-99-99",
           "hora": "21:45",
-          "estado": "programado"
-        }
-      ]
-    },
-    {
-      "id": "ronda-2-ganadores",
-      "nombre": "2ª Ronda",
-      "zona": "ganadores",
-      "orden": 2,
-      "partidos": [
-        {
-          "id": "p-2-1",
-          "equipoA": "",
-          "equipoB": "",
-          "fecha": "2099-99-99",
-          "hora": "21:00",
-          "estado": "programado"
-        },
-        {
-          "id": "p-2-2",
-          "equipoA": "",
-          "equipoB": "",
-          "fecha": "2099-99-99",
-          "hora": "22:00",
           "estado": "programado"
         }
       ]
