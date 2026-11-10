@@ -24,7 +24,7 @@
   { "id": "eq-16", "nombre": "Remises Norte", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/remises-norte.png" },
   { "id": "eq-17", "nombre": "Sabaleros", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/sabaleros.png" },
   { "id": "eq-18", "nombre": "Muzza Mozza", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/muzza-mozza.png" },
-  { "id": "eq-19", "nombre": "Plata Y Plomo", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/plata-y-plomo.png" },
+  { "id": "eq-19", "nombre": "Plata O Plomo", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/plata-o-plomo.png" },
   { "id": "eq-20", "nombre": "Jota Neumaticos", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/jota-neumatcos.png" },
   { "id": "eq-21", "nombre": "Construcciones El Negro", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/costrucciones-el-negro.png" },
   { "id": "eq-22", "nombre": "Corralon Nagüe", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/corralon-nague.png" },
@@ -50,7 +50,8 @@
   { "id": "eq-43", "nombre": "LG rodados", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/LG-rodados.png" },
   { "id": "eq-44", "nombre": "inmobiliaria de la casa", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/inmobiliari-de-la-casa.png" },
   { "id": "eq-45", "nombre": "La burla ", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-burla.png" },
-  { "id": "eq-46", "nombre": "Transportes Kike", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/transportes-kike.png" }
+  { "id": "eq-46", "nombre": "Transportes Kike", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/transportes-kike.png" },
+  { "id": "eq-47", "nombre": "Barrio Sarmiento", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/barrio-sarmiento.png" }
   ],
   "rondas": [
     {
@@ -224,6 +225,14 @@
           "id": "p-1-21",
           "equipoA": "eq-27",
           "equipoB": "eq-45",
+          "fecha": "2099-99-99",
+          "hora": "21:00",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-22",
+          "equipoA": "eq-23",
+          "equipoB": "",
           "fecha": "2099-99-99",
           "hora": "21:00",
           "estado": "programado"
