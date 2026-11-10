@@ -36,9 +36,12 @@ test("build: genera el sitio completo", () => {
 });
 
 test("build: una página de noticia por noticia, con su slug", () => {
-  const pagina = paginas().find((p) => p.startsWith("noticias/") && p !== "noticias/index.html");
-  assert.ok(pagina, "no se generó ninguna página de noticia");
-  assert.match(pagina, /^noticias\/presentacion-xiii-edicion-de-futbol-7-libre-y-iv-edicion-de-futbol-veteranos-1\.html$/);
+  const paginasNoticias = paginas().filter((p) => p.startsWith("noticias/") && p !== "noticias/index.html");
+  const esperadas = [
+    "noticias/inscripciones-abiertas-torneo-de-futbol-7-nocturno-2026-27-2.html",
+    "noticias/presentacion-xiii-edicion-de-futbol-7-libre-y-iv-edicion-de-futbol-veteranos-1.html",
+  ];
+  for (const p of esperadas) assert.ok(paginasNoticias.includes(p), `falta ${p}`);
 });
 
 test("build: no deja marcadores sin reemplazar en ninguna página", () => {
@@ -176,6 +179,14 @@ test("build: la lista de noticias enlaza al detalle", () => {
   // Nota con foto propia: la banda apaisada de siempre, en diferido.
   assert.match(html, /class="nota-img" src="\.\.\/assets\/img\/noticia-1\.jpg" alt="" loading="lazy"/);
   assert.doesNotMatch(html, /placeholder/);
+});
+
+test("build: las noticias nuevas (id mayor) aparecen primero", () => {
+  const html = leer("noticias/index.html");
+  const nueva = html.indexOf("inscripciones-abiertas-torneo-de-futbol-7-nocturno-2026-27-2.html");
+  const vieja = html.indexOf("presentacion-xiii-edicion-de-futbol-7-libre-y-iv-edicion-de-futbol-veteranos-1.html");
+  assert.ok(nueva !== -1 && vieja !== -1, "faltan enlaces a las noticias");
+  assert.ok(nueva < vieja, "la noticia con id mayor debe aparecer primero");
 });
 
 test("build: el detalle de la noticia arma los párrafos y la imagen", () => {

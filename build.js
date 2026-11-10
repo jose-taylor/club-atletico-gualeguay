@@ -44,9 +44,12 @@ const torneos = () =>
         ? b.edicion.localeCompare(a.edicion)
         : a.categoria.localeCompare(b.categoria)));
 
+// Más nuevas primero: por fecha descendente y, cuando comparten fecha, por id
+// descendente. Así la última noticia cargada (id mayor) siempre aparece primera
+// aunque se publique el mismo día que otra.
 const noticias = () =>
   (cache.noticias ??= [...leerJSON(path.join(DIR_DATA, "noticias.json"))]
-    .sort((a, b) => b.fecha.localeCompare(a.fecha)));
+    .sort((a, b) => b.fecha.localeCompare(a.fecha) || Number(b.id) - Number(a.id)));
 
 // Portada por defecto de las noticias que todavía no tienen foto propia: la
 // foto del trofeo (ver tools/preparar-trofeo.py). Es preferible a un recuadro

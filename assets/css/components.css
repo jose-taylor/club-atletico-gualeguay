@@ -214,8 +214,30 @@
   font-style: italic;
 }
 
+/* Cada lado es una grilla de 2 columnas: los datos (nombre + estado) se
+   reparten el ancho y el escudo tiene su columna fija al lado del "vs", así
+   nunca se va a otra línea ni se desalinea, tampoco en celular. */
 .tp-equipo--local,
 .tp-equipo--visitante {
+  display: grid;
+  align-items: center;
+  gap: 0 var(--esp-2);
+  min-width: 0;
+}
+
+/* Local: datos | escudo (escudo contra el centro) */
+.tp-equipo--local {
+  grid-template-columns: minmax(0, 1fr) auto;
+  text-align: right;
+}
+
+/* Visitante: escudo | datos (escudo contra el centro) */
+.tp-equipo--visitante {
+  grid-template-columns: auto minmax(0, 1fr);
+  text-align: left;
+}
+
+.tp-equipo-datos {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
@@ -223,21 +245,23 @@
   min-width: 0;
 }
 
+.tp-equipo--local .tp-equipo-datos { justify-content: flex-end; }
+.tp-equipo--visitante .tp-equipo-datos { justify-content: flex-start; }
+
 .tp-equipo--local .equipo-escudo,
 .tp-equipo--visitante .equipo-escudo {
   margin-right: 0;
-  flex: 0 0 auto;
+  align-self: center;
 }
 
-/* Escudos pegados al VS: local hacia la derecha, visitante hacia la izquierda */
-.tp-equipo--local {
-  justify-content: flex-end;
-  text-align: right;
-}
-
-.tp-equipo--visitante {
-  justify-content: flex-start;
-  text-align: left;
+/* En pantallas angostas se aprieta el aire para que el nombre tenga lugar,
+   sin mover el escudo de su lugar al lado del "vs". */
+@media (max-width: 480px) {
+  .tp-fila--match { gap: var(--esp-2); }
+  .tp-equipo { font-size: var(--fs-sm); }
+  .tp-equipo--local,
+  .tp-equipo--visitante { gap: 0 var(--esp-1); }
+  .tp-resultado { padding: 0; }
 }
 
 .tp-resultado {
