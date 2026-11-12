@@ -80,14 +80,39 @@ test("ultimaRondaPartidos: torneo sin rondas devuelve lista vacía", () => {
   assert.deepEqual(data.ultimaRondaPartidos({}), []);
 });
 
-test("proximosPartidos: los no jugados con fecha, de la más próxima a la más lejana", () => {
-  assert.deepEqual(data.proximosPartidos(T).map((p) => p.id), ["r2-p2", "r1-p2"]);
-  assert.deepEqual(data.proximosPartidos(T, 1).map((p) => p.id), ["r2-p2"]);
+test("proximosPartidos: los pendientes con fecha, ordenados por id", () => {
+  assert.deepEqual(data.proximosPartidos(T).map((p) => p.id), ["r1-p2", "r2-p2"]);
+  assert.deepEqual(data.proximosPartidos(T, 1).map((p) => p.id), ["r1-p2"]);
 });
 
-test("recientesPartidos: los jugados, del más nuevo al más viejo", () => {
+test("proximosPartidos: acepta estado programado y ordena por id natural", () => {
+  const t = { rondas: [{ numero: 1, zona: "iniciales", partidos: [
+    { id: "z", estado: "programado", fecha: "2026-11-16", hora: "19:00" },
+    { id: "a", estado: "programado", fecha: "2026-11-16", hora: "21:00" },
+    { id: "c", estado: "jugado", fecha: "2026-11-14" },
+  ] }] };
+  assert.deepEqual(data.proximosPartidos(t).map((p) => p.id), ["a", "z"]);
+});
+
+test("proximosPartidos: muestra 5 por defecto", () => {
+  const partidos = Array.from({ length: 7 }, (_, i) => ({
+    id: `p-${i + 1}`, estado: "programado", fecha: `2026-11-0${i + 1}`,
+  }));
+  assert.equal(data.proximosPartidos({ rondas: [{ partidos }] }).length, 5);
+});
+
+test("recientesPartidos: los jugados, con los ids más altos primero", () => {
   assert.deepEqual(data.recientesPartidos(T).map((p) => p.id), ["r2-p1", "r1-p1"]);
   assert.deepEqual(data.recientesPartidos(T, 1).map((p) => p.id), ["r2-p1"]);
+});
+
+test("recientesPartidos: ordena por id natural descendente", () => {
+  const t = { rondas: [{ partidos: [
+    { id: "p-2", estado: "jugado", fecha: "2026-10-01" },
+    { id: "p-10", estado: "jugado", fecha: "2026-09-01" },
+    { id: "p-1", estado: "jugado", fecha: "2026-10-20" },
+  ] }] };
+  assert.deepEqual(data.recientesPartidos(t).map((p) => p.id), ["p-10", "p-2", "p-1"]);
 });
 
 test("goleadoresOrdenados: ordena por goles descendente", () => {

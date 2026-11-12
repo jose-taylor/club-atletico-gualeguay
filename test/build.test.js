@@ -118,7 +118,7 @@ test("build: la home refleja si hay o no partidos cargados", () => {
   const html = leer("index.html");
   if (/class="tarjeta-partido"/.test(html)) {
     // Con partidos: escudos resueltos y fechas en español.
-    assert.match(html, /assets\/img\/equipos\//);
+    assert.match(html, /<img class="equipo-escudo" src="[^"]+"/);
     assert.match(html, /de \p{L}+ de \d{4}/u);
   } else {
     // Sin partidos (arranque de temporada): avisos de vacío.
