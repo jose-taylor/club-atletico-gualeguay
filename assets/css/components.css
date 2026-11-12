@@ -182,6 +182,7 @@
   font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  text-align: center;
   color: var(--color-texto-suave);
   margin-bottom: var(--esp-1);
 }
@@ -386,6 +387,50 @@
 .zona-titulo.ganadores { color: var(--color-ganadores); border-color: var(--color-secundario); }
 .zona-titulo.perdedores { color: var(--color-perdedores); border-color: #6a3fd0; }
 
+/* ===== Fixture agrupado por día =====
+   Cada fecha es un bloque (tarjeta) con su encabezado y los partidos de ese
+   día. La fecha manda el orden; dentro del día, los partidos van por hora. */
+.fixture-dias {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-8);
+}
+
+.fixture-dia {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  background: rgba(255, 255, 255, 0.03);
+  padding: var(--esp-5);
+}
+
+.fixture-dia-titulo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--esp-2) var(--esp-4);
+  margin: 0 0 var(--esp-4);
+  padding-bottom: var(--esp-3);
+  border-bottom: 2px solid var(--color-primario);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--color-blanco);
+}
+
+.fixture-dia-cuenta {
+  font-family: var(--font-text);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-texto-suave);
+}
+
+.fixture-dia-partidos .tarjeta-partido:last-child {
+  margin-bottom: 0;
+}
+
 /* ===== Tabla de goleadores =====
    El grosor dice la jerarquía: la cabecera lleva una regla de 2 px y las
    filas una de 1 px. Antes la de cabecera era de 2 px pero al 12% de blanco,
@@ -439,6 +484,17 @@
   color: var(--color-primario);
 }
 .ed-num--sm { font-size: 1.1em; }
+
+/* Aviso de equipo con fecha libre al lado del título del Cuadro. El h2 va en
+   mayúsculas; acá se respeta el nombre propio del equipo. */
+.cuadro-libre {
+  font-family: var(--font-text);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-texto-suave);
+}
 
 /* La fecha de una noticia, como pieza de fanzine: el día en grande y el mes y
    el año apilados al lado. Reemplaza al "3 de octubre de 2026" de una línea. */

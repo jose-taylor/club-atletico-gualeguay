@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { escapeHtml, slugify, formatFecha } from "../lib/texto.js";
+import { escapeHtml, slugify, formatFecha, formatFechaDia } from "../lib/texto.js";
 
 test("escapeHtml: escapa caracteres HTML", () => {
   assert.equal(escapeHtml('<b class="x">A & B</b>'), "&lt;b class=&quot;x&quot;&gt;A &amp; B&lt;/b&gt;");
@@ -19,4 +19,11 @@ test("formatFecha: ISO a formato español", () => {
   assert.equal(formatFecha("2026-10-03"), "3 de octubre de 2026");
   assert.equal(formatFecha("2026-01-01"), "1 de enero de 2026");
   assert.equal(formatFecha("2026-12-31"), "31 de diciembre de 2026");
+});
+
+test("formatFechaDia: agrega el día de la semana", () => {
+  assert.equal(formatFechaDia("2026-10-03"), "Sábado 3 de octubre de 2026");
+  assert.equal(formatFechaDia("2026-01-01"), "Jueves 1 de enero de 2026");
+  assert.equal(formatFechaDia("2026-11-11"), "Miércoles 11 de noviembre de 2026");
+  assert.equal(formatFechaDia(""), "Fecha a definir");
 });

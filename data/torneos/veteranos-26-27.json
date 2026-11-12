@@ -6,7 +6,7 @@
   "edicion": "26/27",
   "estado": "vigente",
   "equipos": [  
-  { "id": "eq-1", "nombre": "Despensa Doña Negra", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/despensa-doña-negra.png" },
+  { "id": "eq-1", "nombre": "Despensa Doña Negra", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/carn-y-desp-doña-negra.png" },
   { "id": "eq-2", "nombre": "Consejo Del Mate", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/consejo-del-mate.png" },
   { "id": "eq-3", "nombre": "Kiosco Bri-Enzo", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/kiosco-bri-enzo.png" },
   { "id": "eq-4", "nombre": "Stud El Tigrecito", "escudo": "assets/img/ESCUDOS TERMINADOS/VETERANOS/STUD-EL-TIGRESITO.png" },
