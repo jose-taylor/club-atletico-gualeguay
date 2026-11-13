@@ -16,5 +16,14 @@
     "categoria": "torneo",
     "imagen": "assets/img/noticia-2.jpg",
     "contenido": "El Club Atlético Gualeguay informa que, a pocos días del comienzo de la 13.ª edición del Torneo de Fútbol 7 Nocturno, las inscripciones continúan abiertas. Los equipos interesados podrán anotarse hasta el inicio de la primera ronda. \n Por otra parte, mañana se realizará en las instalaciones de nuestro club el sorteo correspondiente a la 4.ª edición del torneo de Veteranos, con la participación de los equipos confirmados hasta el momento.\n\nAdemás, anunciamos que próximamente estará disponible nuestra página web, donde se podrá consultar toda la información del torneo: programación de partidos, sorteos, resultados, goleadores y mucho más.\n\n¡Últimos días de inscripción! Para anotarte, comunicate con nosotros o acercate a la secretaría del club."
+  },
+  {
+    "id": 3,
+    "titulo": "INICIO DE TORNEO - 19 DE NOVIEMBRE",
+    "fecha": "2026-11-13",
+    "resumen": "El torneo de Fútbol 7 Nocturno dará comienzo el jueves 19 de noviembre de 2026.",
+    "categoria": "comunicado",
+    "imagen": "assets/img/noticia-3.jpg",
+    "contenido": "El Club Atlético Gualeguay comunica a todos los equipos y aficionados que el torneo de Fútbol 7 Nocturno dará comienzo el próximo jueves 19 de noviembre de 2026.\n\nLa jornada inaugural contará con los siguientes encuentros:\n\nGIMNASIO ARGENTINO VS. MUZZAMOZZA - 21:00 hs\n\nINDUMENTARIA VALENTINO VS. PLATA O PLOMO - 21:50 hs\n\nSUPERMERCADOS YAGUANÉ VS. DEPORTIVO LT - 22:40 hs\n\nTRANSPORTE KIKE DE DOMÍNGUEZ VS. EL REJUNTE - 23:30 hs\n\nLAS TORTUS VS. TU BAZAR EN LÍNEA, ART. DEL HOGAR - 00:20 hs\n\nImportante: El orden de la programación de los partidos se mantiene sin modificaciones. Los horarios están sujetos a posibles cambios debido a condiciones climáticas o a la disputa de rondas de penales.\n\n¡Les deseamos un excelente comienzo de torneo a todos los equipos!"
   }
 ]
