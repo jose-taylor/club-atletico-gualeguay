@@ -488,7 +488,11 @@ function kickerTemporada() {
 }
 
 function bloqueNoticias() {
-  const items = noticias().slice(0, 3)
+  // En la home van las 2 noticias cargadas más recientemente, entendidas como
+  // las de id más alto (independientemente de la fecha).
+  const items = [...noticias()]
+    .sort((a, b) => Number(b.id) - Number(a.id))
+    .slice(0, 2)
     .map((n) => tarjetaNota(n, 0, { prefijoHref: "noticias/" }))
     .join("");
 

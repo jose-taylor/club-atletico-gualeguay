@@ -189,6 +189,17 @@ test("build: las noticias nuevas (id mayor) aparecen primero", () => {
   assert.ok(nueva < vieja, "la noticia con id mayor debe aparecer primero");
 });
 
+test("build: la home muestra las 2 noticias con id más alto", () => {
+  const html = leer("index.html");
+  const ids = [...html.matchAll(/href="noticias\/[^"]+-(\d+)\.html"/g)]
+    .map((m) => Number(m[1]));
+  const esperados = JSON.parse(fs.readFileSync(path.join(RAIZ, "data/noticias.json"), "utf8"))
+    .map((n) => Number(n.id))
+    .sort((a, b) => b - a)
+    .slice(0, 2);
+  assert.deepEqual(ids, esperados);
+});
+
 test("build: el detalle de la noticia arma los párrafos y la imagen", () => {
   const html = leer("noticias/presentacion-xiii-edicion-de-futbol-7-libre-y-iv-edicion-de-futbol-veteranos-1.html");
   assert.match(html, /<h1[^>]*>Presentación: XIII Edición de Fútbol 7 Libre y IV Edición de Fútbol Veteranos<\/h1>/);
