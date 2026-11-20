@@ -50,7 +50,7 @@
   { "id": "eq-43", "nombre": "LG rodados", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/LG-rodados.png" },
   { "id": "eq-44", "nombre": "inmobiliaria de la casa", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/inmobiliari-de-la-casa.png" },
   { "id": "eq-45", "nombre": "La burla ", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-burla.png" },
-  { "id": "eq-46", "nombre": "Transportes Kike", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/transportes-kike.png" },
+  { "id": "eq-46", "nombre": "Tienda MyL/transportes kike", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/tienda-myl.png" },
   { "id": "eq-47", "nombre": "Barrio Sarmiento", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/barrio-sarmiento.png" },
   { "id": "eq-48", "nombre": "3 Tiempos", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/3-tiempos.png" }  
   ],
@@ -68,7 +68,11 @@
           "equipoB": "eq-18",
           "fecha": "2026-11-19",
           "hora": "21:00",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+            "golesA": 0,
+            "golesB": 2
+          }
         },
         {
           "id": "p-1-2",
@@ -76,7 +80,11 @@
           "equipoB": "eq-19",
           "fecha": "2026-11-19",
           "hora": "21:50",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+            "golesA": 0,
+            "golesB": 2
+          }
         },
         {
           "id": "p-1-3",
@@ -84,15 +92,23 @@
           "equipoB": "eq-2",
           "fecha": "2026-11-19",
           "hora": "22:40",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+            "golesA": 2,
+            "golesB": 1
+          }
         },
         {
           "id": "p-1-4",
           "equipoA": "eq-46",
           "equipoB": "eq-7",
           "fecha": "2026-11-19",
-          "hora": "23:30",
-          "estado": "programado"
+          "hora": "23:30", 
+          "estado": "jugado",
+          "resultado": {
+            "golesA": 3,
+            "golesB": 2
+          }
         },
         {
           "id": "p-1-5",
@@ -100,7 +116,15 @@
           "equipoB": "eq-3",
           "fecha": "2026-11-19",
           "hora": "00:20",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 2,
+          "golesB": 2
+          },
+          "penales": {
+            "golesA": 4,
+            "golesB": 3
+          }
         },
         {
           "id": "p-1-6",
