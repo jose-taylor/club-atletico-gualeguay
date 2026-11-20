@@ -99,12 +99,25 @@ test("tarjetaPartido: partido jugado muestra resultado y escudos", () => {
   assert.equal((html.match(/<img/g) || []).length, 1); // eq2 no tiene escudo
 });
 
-test("tarjetaPartido: con penales muestra el desempate en un badge", () => {
-  const html = render.tarjetaPartido(
-    { estado: "jugado", equipoA: "eq1", equipoB: "eq2", resultado: { golesA: 0, golesB: 0 }, penales: { a: 3, b: 2 } },
-    { nombres: NOMBRES, equipos: EQUIPOS });
-  assert.match(html, /0 – 0/);
-  assert.match(html, /badge pen">3-2 pen\.</);
+test("tarjetaPartido: el aviso de penales va con el equipo que ganó la tanda", () => {
+  const base = { estado: "jugado", equipoA: "eq1", equipoB: "eq2", resultado: { golesA: 2, golesB: 2 } };
+  const opts = { nombres: NOMBRES, equipos: EQUIPOS };
+
+  // Gana el local, con el formato de penales que usa el JSON actual.
+  const ganaA = render.tarjetaPartido(
+    { ...base, penales: { golesA: 4, golesB: 3 } }, opts);
+  const localA = ganaA.slice(ganaA.indexOf("tp-equipo--local"), ganaA.indexOf("tp-resultado"));
+  assert.match(localA, /Ganador por penales/);
+  assert.match(ganaA, /2 – 2/);
+  assert.doesNotMatch(ganaA, /undefined|\d+-\d+ pen\./);
+
+  // Gana el visitante, con el formato viejo { a, b }.
+  const ganaB = render.tarjetaPartido({ ...base, penales: { a: 3, b: 4 } }, opts);
+  const antesDelResultado = ganaB.slice(0, ganaB.indexOf("tp-resultado"));
+  const despuesDelResultado = ganaB.slice(ganaB.indexOf("tp-resultado"));
+  assert.doesNotMatch(antesDelResultado, /Ganador por penales/);
+  assert.match(despuesDelResultado, /Ganador por penales/);
+  assert.doesNotMatch(ganaB, /undefined/);
 });
 
 test("tarjetaPartido: con estado agrega un badge por equipo", () => {

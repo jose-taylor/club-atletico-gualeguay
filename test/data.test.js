@@ -101,6 +101,13 @@ test("proximosPartidos: muestra 5 por defecto", () => {
   assert.equal(data.proximosPartidos({ rondas: [{ partidos }] }).length, 5);
 });
 
+test("esJugado: solo marca resultados, no partidos pendientes ni pases libres", () => {
+  assert.equal(data.esJugado({ estado: "jugado" }), true);
+  assert.equal(data.esJugado({ estado: "programado" }), false);
+  assert.equal(data.esJugado({ estado: "por jugar" }), false);
+  assert.equal(data.esJugado({ estado: "pase-libre" }), false);
+});
+
 test("recientesPartidos: los jugados, con los ids más altos primero", () => {
   assert.deepEqual(data.recientesPartidos(T).map((p) => p.id), ["r2-p1", "r1-p1"]);
   assert.deepEqual(data.recientesPartidos(T, 1).map((p) => p.id), ["r2-p1"]);

@@ -3,7 +3,7 @@
 // Los datos y las reglas vienen de lib/, que el build también usa.
 
 import {
-  rondasAgrupadas, mapaNombres, mapaEquipos, goleadoresOrdenados,
+  rondasAgrupadas, mapaNombres, mapaEquipos, goleadoresOrdenados, esJugado,
 } from "./lib/data.js";
 import { tarjetaPartido, tarjetaEquipo, tablaGoleadores, estadoHTML, zonaHTML } from "./lib/render.js";
 import { mostrarEstado } from "./lib/torneo-modelo.js";
@@ -123,10 +123,10 @@ function navRonda(actual, total, numero) {
   return prev + `<span class="ronda-actual">Ronda <b class="ed-num ed-num--sm">${numero}</b></span>` + next;
 }
 
-// --- Fixture: todas las rondas, agrupadas por día ---
-// Se juntan los partidos de todas las rondas y zonas y se separan en bloques
-// por fecha. Cada día es su propia tarjeta, con sus partidos ordenados por id
-// (los más bajos arriba). Los partidos sin fecha van al final.
+// --- Fixture: partidos por jugar de todas las rondas, agrupados por día ---
+// Los partidos ya jugados salen de acá: se ven en Resultados recientes (home)
+// y en el Cuadro. Cada día es su propia tarjeta, con los partidos ordenados
+// por id (los más bajos arriba). Los partidos sin fecha van al final.
 export function vistaFixture(torneo, profundidad) {
   const rondas = rondasAgrupadas(torneo);
   if (!rondas.length) return estadoHTML("Todavía no hay partidos cargados.");
@@ -134,9 +134,13 @@ export function vistaFixture(torneo, profundidad) {
   const entradas = [];
   for (const ronda of rondas) {
     for (const { zona, partidos } of ronda.zonas) {
-      for (const partido of partidos) entradas.push({ partido, zona, ronda: ronda.numero });
+      for (const partido of partidos) {
+        if (esJugado(partido)) continue;
+        entradas.push({ partido, zona, ronda: ronda.numero });
+      }
     }
   }
+  if (!entradas.length) return estadoHTML("Todavía no hay partidos por jugar.");
 
   const bloques = agruparPorDia(entradas).map(([fecha, items]) => {
     const contenido = ordenarPorId(items)

@@ -189,6 +189,12 @@ test("build: las noticias nuevas (id mayor) aparecen primero", () => {
   assert.ok(nueva < vieja, "la noticia con id mayor debe aparecer primero");
 });
 
+test("build: el resultado por penales no pincha los goles de la tanda", () => {
+  const html = leer("index.html");
+  assert.match(html, /badge pen">Ganador por penales<\/span>/);
+  assert.doesNotMatch(html, /undefined-undefined|\d+-\d+ pen\./);
+});
+
 test("build: la home muestra las 2 noticias con id más alto", () => {
   const html = leer("index.html");
   const ids = [...html.matchAll(/href="noticias\/[^"]+-(\d+)\.html"/g)]

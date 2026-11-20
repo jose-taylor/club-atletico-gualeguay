@@ -23,6 +23,12 @@ test("ladoGanador: el desempate se define por penales", () => {
   assert.equal(modelo.ladoGanador({ ...base, penales: { a: 2, b: 3 } }), "B");
 });
 
+test("ladoGanador: acepta penales con golesA/golesB", () => {
+  const base = { estado: "jugado", resultado: { golesA: 2, golesB: 2 } };
+  assert.equal(modelo.ladoGanador({ ...base, penales: { golesA: 4, golesB: 3 } }), "A");
+  assert.equal(modelo.ladoGanador({ ...base, penales: { golesA: 3, golesB: 4 } }), "B");
+});
+
 test("ladoGanador: sin resultado, sin estado jugado o empatado sin penales devuelve null", () => {
   assert.equal(modelo.ladoGanador({ estado: "por jugar" }), null);
   assert.equal(modelo.ladoGanador({ estado: "jugado" }), null);

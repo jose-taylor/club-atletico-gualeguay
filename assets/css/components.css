@@ -92,6 +92,18 @@
   color: #ffe266;
   border-color: rgba(255, 213, 0, 0.45);
 }
+/* El aviso vive dentro del equipo que ganó por penales y baja a su propia
+   línea, para que se lea a quién corresponde sin mover el marcador ni los
+   escudos. */
+.tp-penales {
+  flex-basis: 100%;
+}
+.tp-penales .badge {
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.1;
+  font-size: 0.58rem;
+}
 .badge.bye {
   background: var(--tinte-blanco);
   color: #aeb6e4;
