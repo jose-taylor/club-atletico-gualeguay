@@ -118,8 +118,8 @@
           "hora": "00:20",
           "estado": "jugado",
           "resultado": {
-          "golesA": 2,
-          "golesB": 2
+          "golesA": 1,
+          "golesB": 1
           },
           "penales": {
             "golesA": 3,
@@ -132,23 +132,34 @@
           "equipoB": "eq-37",
           "fecha": "2026-11-20",
           "hora": "21:00",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 0,
+          "golesB": 1
+          }        
         },
-                {
+        {
           "id": "p-1-7",
           "equipoA": "eq-40",
           "equipoB": "eq-15",
           "fecha": "2026-11-20",
           "hora": "21:50",
-          "estado": "programado"
-        },
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 2,
+          "golesB": 1
+          }},
         {
           "id": "p-1-8",
           "equipoA": "eq-17",
           "equipoB": "eq-12",
           "fecha": "2026-11-20",
           "hora": "22:40",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 1,
+          "golesB": 3
+          }
         },
         {
           "id": "p-1-9",
@@ -156,15 +167,27 @@
           "equipoB": "eq-42",
           "fecha": "2026-11-20",
           "hora": "23:30",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 1,
+          "golesB": 0
+          }
         },
-                {
+        {
           "id": "p-1-10",
           "equipoA": "eq-14",
           "equipoB": "eq-25",
           "fecha": "2026-11-20",
           "hora": "00:20",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 2,
+          "golesB": 2
+          },
+          "penales": {
+          "golesA": 3,
+          "golesB": 4
+          }
         },
         {
           "id": "p-1-11",
