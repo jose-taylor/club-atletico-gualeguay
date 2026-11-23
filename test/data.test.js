@@ -80,9 +80,31 @@ test("ultimaRondaPartidos: torneo sin rondas devuelve lista vacía", () => {
   assert.deepEqual(data.ultimaRondaPartidos({}), []);
 });
 
-test("proximosPartidos: los pendientes con fecha, ordenados por id", () => {
-  assert.deepEqual(data.proximosPartidos(T).map((p) => p.id), ["r1-p2", "r2-p2"]);
-  assert.deepEqual(data.proximosPartidos(T, 1).map((p) => p.id), ["r1-p2"]);
+test("proximosPartidos: primero la fecha más cercana, después el id", () => {
+  assert.deepEqual(data.proximosPartidos(T).map((p) => p.id), ["r2-p2", "r1-p2"]);
+  assert.deepEqual(data.proximosPartidos(T, 1).map((p) => p.id), ["r2-p2"]);
+});
+
+test("proximosPartidos: tras una reprogramación elige el día más próximo", () => {
+  const partidos = [];
+  for (let i = 11; i <= 20; i++) {
+    const fecha = i <= 15 ? "2026-11-26" : "2026-11-24";
+    const hora = ["21:00", "21:50", "22:40", "23:30", "00:20"][(i - 1) % 5];
+    partidos.push({ id: `p-1-${i}`, estado: "programado", fecha, hora });
+  }
+  const proximos = data.proximosPartidos({ rondas: [{ partidos }] });
+  assert.deepEqual(proximos.map((p) => p.id),
+    ["p-1-16", "p-1-17", "p-1-18", "p-1-19", "p-1-20"]);
+  assert.deepEqual(proximos.map((p) => p.hora),
+    ["21:00", "21:50", "22:40", "23:30", "00:20"]);
+});
+
+test("proximosPartidos: descarta fechas placeholder como '--'", () => {
+  const partidos = [
+    { id: "sin-fecha", estado: "programado", fecha: "--", hora: "21:00" },
+    { id: "con-fecha", estado: "programado", fecha: "2026-11-24", hora: "21:00" },
+  ];
+  assert.deepEqual(data.proximosPartidos({ rondas: [{ partidos }] }).map((p) => p.id), ["con-fecha"]);
 });
 
 test("proximosPartidos: acepta estado programado y ordena por id natural", () => {

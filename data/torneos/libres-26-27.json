@@ -193,7 +193,7 @@
           "id": "p-1-11",
           "equipoA": "eq-22",
           "equipoB": "eq-38",
-          "fecha": "2026-11-23",
+          "fecha": "2026-11-26",
           "hora": "21:00",
           "estado": "programado"
         },
@@ -201,7 +201,7 @@
           "id": "p-1-12",
           "equipoA": "eq-29",
           "equipoB": "eq-44",
-          "fecha": "2026-11-23",
+          "fecha": "2026-11-26",
           "hora": "21:50",
           "estado": "programado"
         },
@@ -209,7 +209,7 @@
           "id": "p-1-13",
           "equipoA": "eq-11",
           "equipoB": "eq-36",
-          "fecha": "2026-11-23",
+          "fecha": "2026-11-26",
           "hora": "22:40",
           "estado": "programado"
         },
@@ -217,7 +217,7 @@
           "id": "p-1-14",
           "equipoA": "eq-24",
           "equipoB": "eq-39",
-          "fecha": "2026-11-23",
+          "fecha": "2026-11-26",
           "hora": "23:30",
           "estado": "programado"
         },
@@ -225,7 +225,7 @@
           "id": "p-1-15",
           "equipoA": "eq-6",
           "equipoB": "eq-9",
-          "fecha": "2026-11-23",
+          "fecha": "2026-11-26",
           "hora": "00:20",
           "estado": "programado"
         },
