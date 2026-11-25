@@ -37,11 +37,11 @@
       "numero": 1,
       "partidos": [
         {
-          "id": "p-1-1",
+          "id": "p-1-22",
           "equipoA": "eq-17",
           "equipoB": "eq-6",
-          "fecha": "--",
-          "hora": "21:00",
+          "fecha": "2026-11-25",
+          "hora": "21:50",
           "estado": "programado"
         },
         {

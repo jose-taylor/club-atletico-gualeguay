@@ -3,11 +3,12 @@
 // Los datos y las reglas vienen de lib/, que el build también usa.
 
 import {
-  rondasAgrupadas, mapaNombres, mapaEquipos, goleadoresOrdenados, esJugado,
+  rondasAgrupadas, mapaNombres, mapaEquipos, goleadoresOrdenados,
+  agruparPorDia, entradasFixtureCompartidas,
 } from "./lib/data.js";
 import { tarjetaPartido, tarjetaEquipo, tablaGoleadores, estadoHTML, zonaHTML } from "./lib/render.js";
 import { mostrarEstado } from "./lib/torneo-modelo.js";
-import { formatFechaDia, escapeHtml } from "./lib/texto.js";
+import { formatFecha, formatFechaDia, escapeHtml } from "./lib/texto.js";
 
 // Base de las tarjetas de partido: el mapa de equipos y la profundidad de la
 // página (para resolver las rutas de los escudos).
@@ -18,24 +19,27 @@ function baseRender(torneo, profundidad, zona) {
     torneo,
     profundidad,
     conEstado: mostrarEstado(zona),
+    formatearFecha: formatFecha,
   };
 }
 
-// --- Agrupación por día (la comparten Cuadro y Fixture) ---
-// Recibe [{ partido, zona, ronda? }] y devuelve [[fecha, items], ...] con los
-// días en orden ascendente; los partidos sin fecha van al final.
-function agruparPorDia(items) {
-  const porDia = new Map();
-  for (const item of items) {
-    const clave = item.partido.fecha || "";
-    if (!porDia.has(clave)) porDia.set(clave, []);
-    porDia.get(clave).push(item);
-  }
-  return [...porDia.entries()].sort(([a], [b]) => {
-    if (!a) return 1;
-    if (!b) return -1;
-    return a.localeCompare(b);
-  });
+// Color y marca de la tarjeta según la edición. La categoría viene del JSON.
+function categoriaClase(torneo) {
+  return String(torneo?.categoria || "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
+function claseEdicion(torneo) {
+  const categoria = categoriaClase(torneo);
+  return categoria ? `tarjeta-partido--${categoria}` : "";
+}
+
+// Solo las ediciones con marca declarada llevan la letra en círculo.
+const MARCA_CATEGORIA = {
+  veteranos: { texto: "V", etiqueta: "Veteranos" },
+};
+
+function marcaEdicion(torneo) {
+  return MARCA_CATEGORIA[categoriaClase(torneo)] || {};
 }
 
 // Dentro de un día manda el id del partido: los ids más bajos van arriba.
@@ -49,8 +53,10 @@ function ordenarPorId(items) {
     if (b == null) return -1;
     const porId = String(a).localeCompare(String(b), "es", { numeric: true });
     if (porId !== 0) return porId;
-    // Desempate solo si dos partidos comparten id (no debería pasar).
-    return (x.partido.hora || "99:99").localeCompare(y.partido.hora || "99:99");
+    // Desempate si dos partidos comparten id y hora (pasó al cruzar ediciones).
+    const porHora = (x.partido.hora || "99:99").localeCompare(y.partido.hora || "99:99");
+    if (porHora !== 0) return porHora;
+    return Number(!!x.esOtra) - Number(!!y.esOtra);
   });
 }
 
@@ -127,29 +133,35 @@ function navRonda(actual, total, numero) {
 // Los partidos ya jugados salen de acá: se ven en Resultados recientes (home)
 // y en el Cuadro. Cada día es su propia tarjeta, con los partidos ordenados
 // por id (los más bajos arriba). Los partidos sin fecha van al final.
-export function vistaFixture(torneo, profundidad) {
+//
+// En los días en que juegan ambas ediciones se muestran los partidos de las dos
+// en ambos fixtures: el día es el mismo calendario, no dos calendarios aparte.
+// `otras` son los torneos hermanos que cargó torneo.js desde el DOM.
+export function vistaFixture(torneo, profundidad, otras = []) {
   const rondas = rondasAgrupadas(torneo);
   if (!rondas.length) return estadoHTML("Todavía no hay partidos cargados.");
 
-  const entradas = [];
-  for (const ronda of rondas) {
-    for (const { zona, partidos } of ronda.zonas) {
-      for (const partido of partidos) {
-        if (esJugado(partido)) continue;
-        entradas.push({ partido, zona, ronda: ronda.numero });
-      }
-    }
-  }
+  const entradas = entradasFixtureCompartidas(torneo, otras);
   if (!entradas.length) return estadoHTML("Todavía no hay partidos por jugar.");
 
   const bloques = agruparPorDia(entradas).map(([fecha, items]) => {
     const contenido = ordenarPorId(items)
-      .map(({ partido, zona }) => tarjetaPartido(partido, baseRender(torneo, profundidad, zona)))
+      .map(({ partido, zona, torneo: t }) => {
+        const marca = marcaEdicion(t);
+        return tarjetaPartido(partido, {
+          ...baseRender(t, profundidad, zona),
+          clase: claseEdicion(t),
+          marca: marca.texto || "",
+          marcaEtiqueta: marca.etiqueta || "",
+        });
+      })
       .join("");
     return bloqueDia(fecha, items, contenido);
   }).join("");
 
-  return '<h2>Fixture</h2><div class="fixture-dias">' + bloques + "</div>";
+  const categoria = categoriaClase(torneo);
+  const claseContenedor = `fixture-dias${categoria ? ` fixture-dias--${categoria}` : ""}`;
+  return `<h2>Fixture</h2><div class="${claseContenedor}">${bloques}</div>`;
 }
 
 // --- Equipos: escudo, nombre y estado (GAN./PER./ELIM.) ---

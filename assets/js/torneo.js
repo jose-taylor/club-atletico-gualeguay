@@ -17,7 +17,8 @@ async function iniciar(panel, url) {
   // dominio propio) o bajo una subcarpeta como GitHub Pages.
   const profundidad = profundidadDeRutaRelativa(url);
   const tabs = [...document.querySelectorAll('.tabs [role="tab"]')];
-  const estado = { torneo: null, vista: "cuadro", ronda: null };
+  const otrasUrls = (panel.dataset.otrasEdiciones || "").trim().split(/\s+/).filter(Boolean);
+  const estado = { torneo: null, otras: [], vista: "cuadro", ronda: null };
 
   const pintar = () => {
     // La primera vez que se pinta el Cuadro se muestra la última ronda cargada.
@@ -35,8 +36,8 @@ async function iniciar(panel, url) {
   };
 
   function renderVista() {
-    const { torneo, vista, ronda } = estado;
-    if (vista === "fixture") return vistaFixture(torneo, profundidad);
+    const { torneo, otras, vista, ronda } = estado;
+    if (vista === "fixture") return vistaFixture(torneo, profundidad, otras);
     if (vista === "equipos") return vistaEquipos(torneo, profundidad);
     if (vista === "goleadores") return vistaGoleadores(torneo);
     return vistaCuadro(torneo, ronda, profundidad);
@@ -64,10 +65,23 @@ async function iniciar(panel, url) {
     });
   }
 
-  try {
-    const respuesta = await fetch(url, { cache: "no-cache" });
+  // Si falla una edición hermana el fixture sigue funcionando con la propia.
+  const cargar = async (origen) => {
+    const respuesta = await fetch(origen, { cache: "no-cache" });
     if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
-    estado.torneo = await respuesta.json();
+    return respuesta.json();
+  };
+
+  try {
+    const [propio, ...hermanas] = await Promise.all([
+      cargar(url),
+      ...otrasUrls.map((origen) => cargar(origen).catch((error) => {
+        console.warn("torneo: no se pudo cargar la edición hermana", origen, error);
+        return null;
+      })),
+    ]);
+    estado.torneo = propio;
+    estado.otras = hermanas.filter(Boolean);
     pintar();
   } catch (error) {
     panel.innerHTML = estadoHTML("No se pudo cargar el torneo. Reintentá más tarde.", "error");

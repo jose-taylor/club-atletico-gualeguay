@@ -52,7 +52,9 @@
   { "id": "eq-45", "nombre": "La burla ", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-burla.png" },
   { "id": "eq-46", "nombre": "Tienda MyL/transportes kike", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/tienda-myl.png" },
   { "id": "eq-47", "nombre": "Barrio Sarmiento", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/barrio-sarmiento.png" },
-  { "id": "eq-48", "nombre": "3 Tiempos", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/3-tiempos.png" }  
+  { "id": "eq-48", "nombre": "3 Tiempos", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/3-tiempos.png" },  
+  { "id": "eq-49", "nombre": "Club San Martin", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/san-martin.png" },
+  { "id": "eq-50", "nombre": "La Resaca", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-resaca.png" }
   ],
   "rondas": [
     {
@@ -235,7 +237,11 @@
           "equipoB": "eq-28",
           "fecha": "2026-11-24",
           "hora": "21:00",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 1,
+          "golesB": 0
+          }
         },
         {
           "id": "p-1-17",
@@ -243,7 +249,15 @@
           "equipoB": "eq-4",
           "fecha": "2026-11-24",
           "hora": "21:50",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 2,
+          "golesB": 2
+          },
+          "penales": {
+          "golesA": 3,
+          "golesB": 4
+          }
         },
         {
           "id": "p-1-18",
@@ -251,7 +265,15 @@
           "equipoB": "eq-45",
           "fecha": "2026-11-24",
           "hora": "22:40",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 2,
+          "golesB": 2
+          },
+          "penales": {
+          "golesA": 4,
+          "golesB": 3
+          }
         },
         {
           "id": "p-1-19",
@@ -259,7 +281,15 @@
           "equipoB": "eq-10",
           "fecha": "2026-11-24",
           "hora": "23:30",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 1,
+          "golesB": 1
+          },
+          "penales": {
+          "golesA": 4,
+          "golesB": 3
+          }
         },
         {
           "id": "p-1-20",
@@ -267,7 +297,11 @@
           "equipoB": "eq-43",
           "fecha": "2026-11-24",
           "hora": "00:20",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 1,
+          "golesB": 3
+          }
         },
         {
           "id": "p-1-21",
@@ -278,7 +312,7 @@
           "estado": "programado"
         },
         {
-          "id": "p-1-22",
+          "id": "p-1-23",
           "equipoA": "eq-21",
           "equipoB": "eq-31",
           "fecha": "2026-11-25",
@@ -286,11 +320,19 @@
           "estado": "programado"
         },
         {
-          "id": "p-1-23",
+          "id": "p-1-24",
           "equipoA": "eq-20",
           "equipoB": "eq-30",
           "fecha": "2026-11-25",
           "hora": "23:30",
+          "estado": "programado"
+        },
+        {
+          "id": "p-1-25",
+          "equipoA": "eq-49",
+          "equipoB": "eq-50",
+          "fecha": "2026-11-25",
+          "hora": "00:20",
           "estado": "programado"
         }
       ]

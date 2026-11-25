@@ -199,6 +199,33 @@
   margin-bottom: var(--esp-1);
 }
 
+/* Marca de edición: una "V" en círculo en la esquina, sin tocar fondo ni
+   marco. role="img" + aria-label dan el contexto que la letra sola no da. */
+.tp-marca {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1px solid var(--color-primario);
+  border-radius: 50%;
+  color: var(--color-primario);
+  font-family: var(--font-titulo);
+  font-weight: 700;
+  font-size: 0.62rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* En el fixture de Veteranos, los partidos de Libres se leen más suaves:
+   así el amarillo de Veteranos destaca sin cambiar fondo ni borde. */
+.fixture-dias--veteranos .tarjeta-partido--libres .tp-equipo {
+  color: var(--color-texto-suave);
+}
+
 .tp-fila {
   display: flex;
   justify-content: space-between;
@@ -710,6 +737,12 @@
   z-index: -1;
   background: var(--color-superficie);
 }
+/* Días compartidos por dos ediciones: mismo fondo y mismo marco para todos.
+   La distinción de Veteranos va solo en la letra (amarilla), sin teñir ni
+   recuadrar la tarjeta. */
+.tarjeta-partido--veteranos .tp-titulo,
+.tarjeta-partido--veteranos .tp-equipo { color: var(--color-primario); }
+
 .tarjeta-nota a:hover { text-decoration: none; }
 /* Toda la tarjeta es el enlace. El <a> vive en el título (es el nombre de la
    nota, lo que un lector de pantalla tiene que oír), y su ::after se estira

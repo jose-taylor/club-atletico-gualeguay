@@ -75,6 +75,31 @@ test("tarjetaPartido: partido por jugar muestra vs, fecha y hora (sin cancha)", 
   assert.match(html, /Amistad FC/);
 });
 
+test("tarjetaPartido: acepta una clase extra para el color de la edición", () => {
+  const partido = { estado: "programado", equipoA: "eq1", equipoB: "eq2", fecha: "2026-11-25" };
+  const conClase = render.tarjetaPartido(partido, {
+    nombres: NOMBRES, equipos: EQUIPOS, clase: "tarjeta-partido--veteranos",
+  });
+  assert.match(conClase, /^<div class="tarjeta-partido tarjeta-partido--veteranos">/);
+  const sinClase = render.tarjetaPartido(partido, { nombres: NOMBRES, equipos: EQUIPOS });
+  assert.match(sinClase, /^<div class="tarjeta-partido">/);
+  const paseLibre = render.tarjetaPartido(
+    { estado: "pase-libre", equipoA: "eq1" },
+    { nombres: NOMBRES, equipos: EQUIPOS, clase: "tarjeta-partido--veteranos" });
+  assert.match(paseLibre, /^<div class="tarjeta-partido tarjeta-partido--veteranos">/);
+});
+
+test("tarjetaPartido: marca de edición con etiqueta para lectores de pantalla", () => {
+  const partido = { estado: "programado", equipoA: "eq1", equipoB: "eq2", fecha: "2026-11-25" };
+  const html = render.tarjetaPartido(partido, {
+    nombres: NOMBRES, equipos: EQUIPOS,
+    clase: "tarjeta-partido--veteranos", marca: "V", marcaEtiqueta: "Veteranos",
+  });
+  assert.match(html, /<span class="tp-marca" role="img" aria-label="Veteranos">V<\/span>/);
+  assert.match(render.tarjetaPartido(partido, { nombres: NOMBRES, equipos: EQUIPOS }), /^<div class="tarjeta-partido">/);
+  assert.doesNotMatch(render.tarjetaPartido(partido, { nombres: NOMBRES, equipos: EQUIPOS }), /tp-marca/);
+});
+
 test("tarjetaPartido: usa el formateador de fecha cuando se le pasa", () => {
   const html = render.tarjetaPartido(
     { estado: "por jugar", equipoA: "eq1", equipoB: "eq2", fecha: "2026-10-04" },

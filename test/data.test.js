@@ -107,6 +107,49 @@ test("proximosPartidos: descarta fechas placeholder como '--'", () => {
   assert.deepEqual(data.proximosPartidos({ rondas: [{ partidos }] }).map((p) => p.id), ["con-fecha"]);
 });
 
+test("proximosPartidos: acepta fechas en formato argentino", () => {
+  const partidos = [
+    { id: "argentina", estado: "programado", fecha: "25-11-2026", hora: "21:00" },
+    { id: "iso", estado: "programado", fecha: "2026-11-24", hora: "21:00" },
+  ];
+  assert.deepEqual(data.proximosPartidos({ rondas: [{ partidos }] }).map((p) => p.id), ["iso", "argentina"]);
+});
+
+test("entradasFixtureCompartidas: cruza solo los días en que juegan ambas ediciones", () => {
+  const libres = { id: "libres", categoria: "libres", rondas: [{ numero: 1, zona: "iniciales", partidos: [
+    { id: "l-25", fecha: "2026-11-25", estado: "programado" },
+    { id: "l-26", fecha: "2026-11-26", estado: "programado" },
+    { id: "l-jugado", fecha: "2026-11-25", estado: "jugado" },
+  ] }] };
+  const veteranos = { id: "veteranos", categoria: "veteranos", rondas: [{ numero: 1, zona: "iniciales", partidos: [
+    { id: "v-25", fecha: "25-11-2026", estado: "programado" },
+    { id: "v-27", fecha: "2026-11-27", estado: "programado" },
+    { id: "v-sin", fecha: "--", estado: "programado" },
+  ] }] };
+
+  const enLibres = data.entradasFixtureCompartidas(libres, [veteranos]);
+  assert.deepEqual(enLibres.map((x) => x.partido.id), ["l-25", "l-26", "v-25"]);
+  assert.deepEqual(enLibres.map((x) => x.esOtra), [false, false, true]);
+  assert.equal(enLibres[2].torneo, veteranos);
+
+  const enVeteranos = data.entradasFixtureCompartidas(veteranos, [libres]);
+  assert.deepEqual(enVeteranos.map((x) => x.partido.id), ["v-25", "v-27", "v-sin", "l-25"]);
+  assert.deepEqual(enVeteranos.map((x) => x.esOtra), [false, false, false, true]);
+});
+
+test("agruparPorDia: fechas definidas primero y 'Fecha a definir' al final", () => {
+  const items = [
+    { partido: { id: "sin", fecha: "--" } },
+    { partido: { id: "tarde", fecha: "2026-11-26" } },
+    { partido: { id: "vacio", fecha: "" } },
+    { partido: { id: "argentina", fecha: "25-11-2026" } },
+  ];
+  const grupos = data.agruparPorDia(items);
+  assert.deepEqual(grupos.map(([fecha]) => fecha), ["2026-11-25", "2026-11-26", ""]);
+  assert.deepEqual(grupos[0][1].map((x) => x.partido.id), ["argentina"]);
+  assert.deepEqual(grupos[2][1].map((x) => x.partido.id), ["sin", "vacio"]);
+});
+
 test("proximosPartidos: acepta estado programado y ordena por id natural", () => {
   const t = { rondas: [{ numero: 1, zona: "iniciales", partidos: [
     { id: "z", estado: "programado", fecha: "2026-11-16", hora: "19:00" },

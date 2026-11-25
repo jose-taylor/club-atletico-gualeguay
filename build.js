@@ -148,10 +148,17 @@ function generarEdiciones() {
   for (const torneo of lista) {
     const rutaRel = rutaPaginaEdicion(torneo);
     const titulo = `${torneo.nombre} · Edición ${torneo.edicion}`;
+    // El Fixture cruza días con las otras ediciones vigentes: el navegador
+    // necesita sus URLs para mostrar esos partidos en el calendario compartido.
+    const otrasUrls = lista
+      .filter((otro) => otro.id !== torneo.id && otro.estado === "vigente")
+      .map((otro) => `${assetsRoot(rutaRel)}data/torneos/${otro.id}.json`)
+      .join(" ");
     const contenido = rellenar(plantilla("torneo-edicion.html").contenido, {
       "<!-- TITULO_EDICION -->": `${escapeHtml(torneo.nombre)} · Edición <b class="ed-num">${escapeHtml(torneo.edicion)}</b>`,
       "<!-- INDICE_EDICIONES -->": selectorEdiciones(torneo, lista),
       "<!-- DATA_URL -->": `${assetsRoot(rutaRel)}data/torneos/${torneo.id}.json`,
+      "<!-- OTRAS_URLS -->": otrasUrls,
     });
     escribirPagina(rutaRel, `${titulo} | Club Atlético Gualeguay`, "torneos", contenido);
   }
