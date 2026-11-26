@@ -42,7 +42,11 @@
           "equipoB": "eq-6",
           "fecha": "2026-11-25",
           "hora": "21:50",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+            "golesA": 0,
+            "golesB": 3
+          }
         },
         {
           "id": "p-1-2",
