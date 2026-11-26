@@ -54,7 +54,10 @@
   { "id": "eq-47", "nombre": "Barrio Sarmiento", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/barrio-sarmiento.png" },
   { "id": "eq-48", "nombre": "3 Tiempos", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/3-tiempos.png" },  
   { "id": "eq-49", "nombre": "Club San Martin", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/san-martin.png" },
-  { "id": "eq-50", "nombre": "La Resaca", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-resaca.png" }
+  { "id": "eq-50", "nombre": "La Resaca", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-resaca.png" },
+  { "id": "eq-51", "nombre": "MYB Yuyitos del pago", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/myb-yuyitos.png" },
+  { "id": "eq-52", "nombre": "Pasito a pasito", "escudo": "" }
+
   ],
   "rondas": [
     {
@@ -309,7 +312,15 @@
           "equipoB": "eq-48",
           "fecha": "2026-11-25",
           "hora": "21:00",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 1,
+          "golesB": 1
+          },
+          "penales": {
+          "golesA": 3,
+          "golesB": 4
+          }
         },
         {
           "id": "p-1-23",
@@ -317,7 +328,11 @@
           "equipoB": "eq-31",
           "fecha": "2026-11-25",
           "hora": "22:40",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 4,
+          "golesB": 0
+          }
         },
         {
           "id": "p-1-24",
@@ -325,7 +340,11 @@
           "equipoB": "eq-30",
           "fecha": "2026-11-25",
           "hora": "23:30",
-          "estado": "programado"
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 2,
+          "golesB": 0
+          } 
         },
         {
           "id": "p-1-25",
@@ -333,10 +352,66 @@
           "equipoB": "eq-50",
           "fecha": "2026-11-25",
           "hora": "00:20",
+          "estado": "jugado",
+          "resultado": {
+          "golesA": 0,
+          "golesB": 2
+          }
+        },
+        {
+          "id": "p-1-26",
+          "equipoA": "eq-51",
+          "equipoB": "eq-52",
+          "fecha": "2026-11-27",
+          "hora": "21:00",
           "estado": "programado"
         }
-      ]
-    }
-  ],
+      ],
+    "goleadores": []
+    },
+    {
+      "id": "ronda-2-perdedores",
+      "nombre": "2ª Ronda",
+      "zona": "perdedores",
+      "orden": 2,
+      "numero": 2,
+      "partidos": [
+        {
+          "id": "p-2-1",
+          "equipoA": "eq-14",
+          "equipoB": "eq-35",
+          "fecha": "2026-11-27",
+          "hora": "21:50",
+          "estado": "programado"
+        },
+        {
+          "id": "p-2-3",
+          "equipoA": "eq-15",
+          "equipoB": "eq-13",
+          "fecha": "2026-11-27",
+          "hora": "23:30",
+          "estado": "programado"
+        }
+      ],
   "goleadores": []
+    },
+        {
+      "id": "ronda-2-ganadores",
+      "nombre": "2ª Ronda",
+      "zona": "ganadores",
+      "orden": 2,
+      "numero": 2,
+      "partidos": [
+              {
+          "id": "p-2-4",
+          "equipoA": "eq-23",
+          "equipoB": "eq-18",
+          "fecha": "2026-11-27",
+          "hora": "00:20",
+          "estado": "programado"
+        }
+      ],
+  "goleadores": []
+    }
+  ]
 }

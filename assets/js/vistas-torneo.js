@@ -4,7 +4,7 @@
 
 import {
   rondasAgrupadas, mapaNombres, mapaEquipos, goleadoresOrdenados,
-  agruparPorDia, entradasFixtureCompartidas,
+  agruparPorDia, entradasFixtureCompartidas, ordenarPorHorario,
 } from "./lib/data.js";
 import { tarjetaPartido, tarjetaEquipo, tablaGoleadores, estadoHTML, zonaHTML } from "./lib/render.js";
 import { mostrarEstado } from "./lib/torneo-modelo.js";
@@ -42,24 +42,6 @@ function marcaEdicion(torneo) {
   return MARCA_CATEGORIA[categoriaClase(torneo)] || {};
 }
 
-// Dentro de un día manda el id del partido: los ids más bajos van arriba.
-// Se comparan de forma natural para que "p-2" quede antes que "p-10".
-function ordenarPorId(items) {
-  return [...items].sort((x, y) => {
-    const a = x.partido.id;
-    const b = y.partido.id;
-    if (a == null && b == null) return 0;
-    if (a == null) return 1;
-    if (b == null) return -1;
-    const porId = String(a).localeCompare(String(b), "es", { numeric: true });
-    if (porId !== 0) return porId;
-    // Desempate si dos partidos comparten id y hora (pasó al cruzar ediciones).
-    const porHora = (x.partido.hora || "99:99").localeCompare(y.partido.hora || "99:99");
-    if (porHora !== 0) return porHora;
-    return Number(!!x.esOtra) - Number(!!y.esOtra);
-  });
-}
-
 // Bloque visual de un día: encabezado con la fecha y los partidos adentro.
 function bloqueDia(fecha, items, contenido) {
   const cuenta = items.length === 1 ? "1 partido" : `${items.length} partidos`;
@@ -84,7 +66,7 @@ export function vistaCuadro(torneo, indice, profundidad) {
     partidos.map((partido) => ({ partido, zona })));
 
   const bloques = agruparPorDia(entradas).map(([fecha, items]) => {
-    const ordenados = ordenarPorId(items);
+    const ordenados = ordenarPorHorario(items);
     // Las zonas conservan su orden canónico y muestran solo los partidos
     // de ese día.
     const contenido = ronda.zonas
@@ -132,7 +114,7 @@ function navRonda(actual, total, numero) {
 // --- Fixture: partidos por jugar de todas las rondas, agrupados por día ---
 // Los partidos ya jugados salen de acá: se ven en Resultados recientes (home)
 // y en el Cuadro. Cada día es su propia tarjeta, con los partidos ordenados
-// por id (los más bajos arriba). Los partidos sin fecha van al final.
+// por hora (el id solo desempata). Los partidos sin fecha van al final.
 //
 // En los días en que juegan ambas ediciones se muestran los partidos de las dos
 // en ambos fixtures: el día es el mismo calendario, no dos calendarios aparte.
@@ -145,7 +127,7 @@ export function vistaFixture(torneo, profundidad, otras = []) {
   if (!entradas.length) return estadoHTML("Todavía no hay partidos por jugar.");
 
   const bloques = agruparPorDia(entradas).map(([fecha, items]) => {
-    const contenido = ordenarPorId(items)
+    const contenido = ordenarPorHorario(items)
       .map(({ partido, zona, torneo: t }) => {
         const marca = marcaEdicion(t);
         return tarjetaPartido(partido, {

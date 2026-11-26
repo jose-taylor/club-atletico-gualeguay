@@ -115,6 +115,26 @@ test("proximosPartidos: acepta fechas en formato argentino", () => {
   assert.deepEqual(data.proximosPartidos({ rondas: [{ partidos }] }).map((p) => p.id), ["iso", "argentina"]);
 });
 
+test("ordenarPorHorario: manda la hora, el id solo desempata", () => {
+  const items = [
+    { partido: { id: "p-1-2", hora: "22:40" }, esOtra: true },
+    { partido: { id: "p-1-26", hora: "21:00" } },
+    { partido: { id: "p-2-1", hora: "21:50" } },
+    { partido: { id: "p-2-3", hora: "23:30" } },
+    { partido: { id: "p-2-4", hora: "00:20" } },
+  ];
+  assert.deepEqual(data.ordenarPorHorario(items).map((x) => x.partido.id),
+    ["p-1-26", "p-2-1", "p-1-2", "p-2-3", "p-2-4"]);
+});
+
+test("ordenarPorHorario: sin partidos de tarde, la madrugada no se corre al día siguiente", () => {
+  const items = [
+    { partido: { id: "b", hora: "00:20" } },
+    { partido: { id: "a", hora: "01:00" } },
+  ];
+  assert.deepEqual(data.ordenarPorHorario(items).map((x) => x.partido.id), ["b", "a"]);
+});
+
 test("entradasFixtureCompartidas: cruza solo los días en que juegan ambas ediciones", () => {
   const libres = { id: "libres", categoria: "libres", rondas: [{ numero: 1, zona: "iniciales", partidos: [
     { id: "l-25", fecha: "2026-11-25", estado: "programado" },
