@@ -56,7 +56,7 @@
   { "id": "eq-49", "nombre": "Club San Martin", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/san-martin.png" },
   { "id": "eq-50", "nombre": "La Resaca", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/la-resaca.png" },
   { "id": "eq-51", "nombre": "MYB Yuyitos del pago", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/myb-yuyitos.png" },
-  { "id": "eq-52", "nombre": "Pasito a pasito", "escudo": "" }
+  { "id": "eq-52", "nombre": "Pasito a pasito", "escudo": "assets/img/ESCUDOS TERMINADOS/LIBRES/pasito-a-pasito.png" }
 
   ],
   "rondas": [
